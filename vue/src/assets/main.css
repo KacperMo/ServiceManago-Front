@@ -6,3 +6,11 @@
 body {
   font-family: "Inconsolata", monospace;
 }
+
+a.logo {
+  color: black;
+}
+
+.router-link-active {
+  color: red;
+}

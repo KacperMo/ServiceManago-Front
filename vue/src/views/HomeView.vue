@@ -1,5 +1,3 @@
-<script setup></script>
-
 <template>
-  <h2>Home</h2>
+  <h2>Strona główna</h2>
 </template>
