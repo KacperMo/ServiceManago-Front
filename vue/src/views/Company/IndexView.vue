@@ -1,5 +1,35 @@
-<script setup></script>
+<script setup>
+import { useCompanyStore } from "@/stores/company.js";
+
+const store = useCompanyStore();
+
+const { err, collection } = await store.all("http://127.0.0.1:3333/companies");
+</script>
 
 <template>
   <h2>Firmy</h2>
+  <div v-if="err">{{ err.message }}</div>
+  <table v-if="collection.length" class="w-full text-left">
+    <thead>
+      <tr class="border-t-[1px] border-black">
+        <th class="border-b-[1px] border-black">#</th>
+        <th class="border-b-[1px] border-black">Nazwa</th>
+        <th class="border-b-[1px] border-black">Miasto</th>
+        <th class="border-b-[1px] border-black">Numer telefonu</th>
+        <th class="border-b-[1px] border-black">Utworzono</th>
+        <th class="border-b-[1px] border-black">Zaktualizowano</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="company in collection" :key="company.id">
+        <td class="border-b-[1px] border-black">{{ company.id }}</td>
+        <td class="border-b-[1px] border-black">{{ company.name }}</td>
+        <td class="border-b-[1px] border-black">{{ company.city }}</td>
+        <td class="border-b-[1px] border-black">{{ company.phone_number }}</td>
+        <td class="border-b-[1px] border-black">{{ company.created_at }}</td>
+        <td class="border-b-[1px] border-black">{{ company.updated_at }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div v-else>Brak danych</div>
 </template>
