@@ -1,5 +1,6 @@
 <script setup>
 import { useCompanyStore } from "@/stores/company.js";
+import AppAlert from "@/components/AppAlert.vue";
 
 const store = useCompanyStore();
 
@@ -8,7 +9,7 @@ const { err, collection } = await store.all("http://127.0.0.1:3333/companies");
 
 <template>
   <h2>Firmy</h2>
-  <div v-if="err">{{ err.message }}</div>
+  <AppAlert v-if="err" type="danger">{{ err.message }}</AppAlert>
   <table v-if="collection.length" class="w-full text-left">
     <thead>
       <tr class="border-t-[1px] border-black">
@@ -31,5 +32,5 @@ const { err, collection } = await store.all("http://127.0.0.1:3333/companies");
       </tr>
     </tbody>
   </table>
-  <div v-else>Brak danych</div>
+  <AppAlert v-else>Brak danych</AppAlert>
 </template>
