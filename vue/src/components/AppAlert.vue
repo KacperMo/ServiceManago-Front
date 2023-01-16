@@ -15,8 +15,8 @@ const alertClass = computed(() => {
 
   return "bg-yellow-300";
 });
-console.log(props.type);
 </script>
+
 <template>
   <div :class="alertClass" class="px-1 py-1">
     <slot />

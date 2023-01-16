@@ -2,6 +2,7 @@
 import { useCompanyStore } from "@/stores/company.js";
 import AppAlert from "@/components/AppAlert.vue";
 import HeaderTwo from "@/components/HeaderTwo.vue";
+import TableData from "@/components/TableData.vue";
 
 const store = useCompanyStore();
 
@@ -24,12 +25,12 @@ const { err, collection } = await store.all("http://127.0.0.1:3333/companies");
     </thead>
     <tbody>
       <tr v-for="company in collection" :key="company.id">
-        <td class="border-b-[1px] border-black">{{ company.id }}</td>
-        <td class="border-b-[1px] border-black">{{ company.name }}</td>
-        <td class="border-b-[1px] border-black">{{ company.city }}</td>
-        <td class="border-b-[1px] border-black">{{ company.phone_number }}</td>
-        <td class="border-b-[1px] border-black">{{ company.created_at }}</td>
-        <td class="border-b-[1px] border-black">{{ company.updated_at }}</td>
+        <TableData>{{ company.id }}</TableData>
+        <TableData>{{ company.name }}</TableData>
+        <TableData>{{ company.city }}</TableData>
+        <TableData>{{ company.phone_number }}</TableData>
+        <TableData>{{ company.created_at }}</TableData>
+        <TableData>{{ company.updated_at }}</TableData>
       </tr>
     </tbody>
   </table>
