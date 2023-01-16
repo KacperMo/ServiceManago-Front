@@ -28,7 +28,12 @@ const { err, collection } = await store.all("http://127.0.0.1:3333/companies");
     <tbody>
       <tr v-for="company in collection" :key="company.id">
         <TableData>{{ company.id }}</TableData>
-        <TableData>{{ company.name }}</TableData>
+        <TableData>
+          <RouterLink
+            :to="{ name: 'companies.show', params: { id: company.id } }"
+            >{{ company.name }}</RouterLink
+          >
+        </TableData>
         <TableData>{{ company.city }}</TableData>
         <TableData>{{ company.phone_number }}</TableData>
         <TableData>{{ company.created_at }}</TableData>

@@ -19,6 +19,11 @@ const router = createRouter({
       name: "companies.index",
       component: () => import("../views/Company/IndexView.vue"),
     },
+    {
+      path: "/firmy/:id",
+      name: "companies.show",
+      component: () => import("../views/Company/IndexShow.vue"),
+    },
   ],
 });
 

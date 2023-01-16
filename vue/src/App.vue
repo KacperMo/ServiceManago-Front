@@ -9,7 +9,7 @@ import AppFooter from "@/components/AppFooter.vue";
     <div class="w-1/5 mr-1 p-2 font-bold">
       <RouterLink :to="{ name: 'home' }" class="logo">ServiceManago</RouterLink>
     </div>
-    <div class="w-4/5 py-2">&mdash;&mdash;</div>
+    <div class="w-4/5 py-2">&mdash;</div>
   </div>
   <div class="flex">
     <AppNav />
