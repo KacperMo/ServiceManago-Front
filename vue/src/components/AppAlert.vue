@@ -18,7 +18,7 @@ const alertClass = computed(() => {
 console.log(props.type);
 </script>
 <template>
-  <div :class="alertClass" class="py-1">
+  <div :class="alertClass" class="px-1 py-1">
     <slot />
   </div>
 </template>

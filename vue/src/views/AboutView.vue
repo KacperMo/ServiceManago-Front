@@ -1,3 +1,7 @@
+<script setup>
+import HeaderTwo from "@/components/HeaderTwo.vue";
+</script>
+
 <template>
-  <h2>O firmie</h2>
+  <HeaderTwo>O firmie</HeaderTwo>
 </template>

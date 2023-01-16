@@ -10,6 +10,9 @@ body {
 a.logo {
   color: black;
 }
+a.logo:hover {
+  color: red;
+}
 
 .router-link-active {
   color: red;

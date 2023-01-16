@@ -1,6 +1,7 @@
 <script setup>
 import { useCompanyStore } from "@/stores/company.js";
 import AppAlert from "@/components/AppAlert.vue";
+import HeaderTwo from "@/components/HeaderTwo.vue";
 
 const store = useCompanyStore();
 
@@ -8,7 +9,7 @@ const { err, collection } = await store.all("http://127.0.0.1:3333/companies");
 </script>
 
 <template>
-  <h2>Firmy</h2>
+  <HeaderTwo>Firmy</HeaderTwo>
   <AppAlert v-if="err" type="danger">{{ err.message }}</AppAlert>
   <table v-if="collection.length" class="w-full text-left">
     <thead>
