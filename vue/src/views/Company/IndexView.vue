@@ -2,6 +2,7 @@
 import { useCompanyStore } from "@/stores/company.js";
 import AppAlert from "@/components/AppAlert.vue";
 import HeaderTwo from "@/components/HeaderTwo.vue";
+import TableHeader from "@/components/TableHeader.vue";
 import TableData from "@/components/TableData.vue";
 
 const store = useCompanyStore();
@@ -15,12 +16,12 @@ const { err, collection } = await store.all("http://127.0.0.1:3333/companies");
   <table v-if="collection.length" class="w-full text-left">
     <thead>
       <tr class="border-t-[1px] border-black">
-        <th class="border-b-[1px] border-black">#</th>
-        <th class="border-b-[1px] border-black">Nazwa</th>
-        <th class="border-b-[1px] border-black">Miasto</th>
-        <th class="border-b-[1px] border-black">Numer telefonu</th>
-        <th class="border-b-[1px] border-black">Utworzono</th>
-        <th class="border-b-[1px] border-black">Zaktualizowano</th>
+        <TableHeader>#</TableHeader>
+        <TableHeader>Nazwa</TableHeader>
+        <TableHeader>Miasto</TableHeader>
+        <TableHeader>Numer telefonu</TableHeader>
+        <TableHeader>Utworzono</TableHeader>
+        <TableHeader>Zaktualizowano</TableHeader>
       </tr>
     </thead>
     <tbody>
