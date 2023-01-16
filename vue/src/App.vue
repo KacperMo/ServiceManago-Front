@@ -1,5 +1,6 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
+import AppNav from "@/components/AppNav.vue";
 import AppFooter from "@/components/AppFooter.vue";
 </script>
 
@@ -11,17 +12,7 @@ import AppFooter from "@/components/AppFooter.vue";
     <div class="w-4/5 py-2">&mdash;&mdash;</div>
   </div>
   <div class="flex">
-    <div class="w-1/5 mr-1 p-2 border-t-[1px] border-black">
-      <div>
-        <RouterLink :to="{ name: 'home' }">Strona główna</RouterLink>
-      </div>
-      <div>
-        <RouterLink :to="{ name: 'about' }">O nas</RouterLink>
-      </div>
-      <div>
-        <RouterLink :to="{ name: 'companies.index' }">Firmy</RouterLink>
-      </div>
-    </div>
+    <AppNav />
     <div class="w-4/5 py-2 border-t-[1px] border-black">
       <RouterView v-slot="{ Component }">
         <template v-if="Component">
