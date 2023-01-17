@@ -1,3 +1,3 @@
 <template>
-  <th class="border-b-[1px] border-black"><slot /></th>
+  <th class="border-b-[1px] border-black py-1"><slot /></th>
 </template>

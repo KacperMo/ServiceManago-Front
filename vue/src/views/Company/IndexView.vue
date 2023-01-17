@@ -8,7 +8,7 @@ import TableData from "@/components/TableData.vue";
 
 const store = useCompanyStore();
 
-const { err, collection } = await store.all("http://127.0.0.1:3333/companies");
+const { err, collection } = await store.all("companies");
 </script>
 
 <template>
