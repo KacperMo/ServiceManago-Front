@@ -22,7 +22,12 @@ const router = createRouter({
     {
       path: "/firmy/:id",
       name: "companies.show",
-      component: () => import("../views/Company/IndexShow.vue"),
+      component: () => import("../views/Company/ShowView.vue"),
+    },
+    {
+      path: "/firmy/:id/edit",
+      name: "companies.edit",
+      component: () => import("../views/Company/EditView.vue"),
     },
   ],
 });

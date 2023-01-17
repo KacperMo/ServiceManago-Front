@@ -26,7 +26,6 @@ a.logo:hover {
 .btn {
   color: #1e40af;
   border-bottom: 1px solid #1e40af;
-  padding-bottom: 0.2rem;
 }
 .btn:hover {
   border-bottom: 0;

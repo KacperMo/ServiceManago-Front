@@ -9,7 +9,6 @@ const route = useRoute();
 const store = useCompanyStore();
 
 const { err, data } = await store.getOne("companies", route.params.id);
-console.log(err, data);
 </script>
 
 <template>
@@ -33,8 +32,13 @@ console.log(err, data);
   </table>
   <AppAlert v-else>Brak danych</AppAlert>
   <p class="py-3">
-    <RouterLink :to="{ name: 'companies.index' }" class="btn"
+    <RouterLink :to="{ name: 'companies.index' }" class="btn mr-2"
       >Powrót</RouterLink
+    >
+    <RouterLink
+      :to="{ name: 'companies.edit', params: { id: route.params.id } }"
+      class="btn"
+      >Edytuj</RouterLink
     >
   </p>
 </template>
