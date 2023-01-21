@@ -1,22 +1,39 @@
 <script setup>
 import { reactive } from "vue";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import { useCompanyStore } from "@/stores/company.js";
 import AppAlert from "@/components/AppAlert.vue";
 import HeaderTwo from "@/components/HeaderTwo.vue";
 import InputField from "@/components/InputField.vue";
 
 const route = useRoute();
+const router = useRouter();
 const store = useCompanyStore();
 const { err, data } = await store.getOne("companies", route.params.id);
 const company = reactive({
+  id: data?.id,
   name: data?.name,
   city: data?.city,
 });
 
-const onSubmit = () => {
+const onSubmit = async () => {
   console.log("on submit");
   console.log(company);
+  const editingCompany = {
+    id: company.id,
+    name: company.name,
+    city: company.city,
+  };
+  // console.log(editingCompany);
+  const { err, data } = await store.update(
+    "companies",
+    company.id,
+    editingCompany
+  );
+  console.log(err, data);
+  if (data.status == 200) {
+    router.push({ name: "companies.show", params: { id: company.id } });
+  }
 };
 </script>
 

@@ -33,5 +33,21 @@ export const useCompanyStore = defineStore("company", () => {
     return { err, data };
   }
 
-  return { all, getOne };
+  async function update(urlFragment, id, payload) {
+    let err = null;
+    let data = null;
+    try {
+      data = await axios.put(urlFragment + "\\" + id, payload);
+    } catch (e) {
+      console.log(e);
+      // err = e;
+      // if (e.response?.data) {
+      //   validationErr = e.response.data.errors;
+      // }
+    }
+
+    return { err, data };
+  }
+
+  return { all, getOne, update };
 });
