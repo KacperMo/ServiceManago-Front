@@ -1,5 +1,5 @@
 <script setup>
-import { reactive } from "vue";
+import { ref, reactive } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useCompanyStore } from "@/stores/company.js";
 import AppAlert from "@/components/AppAlert.vue";
@@ -9,7 +9,11 @@ import InputField from "@/components/InputField.vue";
 const route = useRoute();
 const router = useRouter();
 const store = useCompanyStore();
-const { err, data } = await store.getOne("companies", route.params.id);
+const error = ref(null);
+
+const { err: error1, data } = await store.getOne("companies", route.params.id);
+error.value = error1;
+
 const company = reactive({
   id: data?.id,
   name: data?.name,
@@ -17,31 +21,38 @@ const company = reactive({
 });
 
 const onSubmit = async () => {
-  console.log("on submit");
-  console.log(company);
+  // console.log("on submit");
+  // console.log(company);
   const editingCompany = {
     id: company.id,
     name: company.name,
     city: company.city,
   };
-  // console.log(editingCompany);
-  const { err, data } = await store.update(
+  const { err: error1, data } = await store.update(
     "companies",
     company.id,
     editingCompany
   );
-  console.log(err, data);
+  error.value = error1;
+
   if (data.status == 200) {
     router.push({ name: "companies.show", params: { id: company.id } });
+  }
+};
+
+const destroy = async (id) => {
+  const { err: error1, data } = await store.destroy("companies", id);
+  error.value = error1;
+  if (data?.status == 204) {
+    router.push({ name: "companies.index" });
   }
 };
 </script>
 
 <template>
   <HeaderTwo>Edycja</HeaderTwo>
-  <AppAlert v-if="err" type="danger">{{ err.message }}</AppAlert>
+  <AppAlert v-if="error" type="danger">{{ error.message }}</AppAlert>
   <form v-if="data" @submit.prevent="onSubmit">
-    <!-- <input type="text" v-model="company.name" /> -->
     <div class="mb-1">
       <InputField
         v-model="company.name"
@@ -59,7 +70,8 @@ const onSubmit = async () => {
       />
     </div>
     <div>
-      <button type="submit">Wyślij</button>
+      <button type="submit">Wyślij</button> |
+      <a @click="destroy(company.id)" href="#usun" class="">Delete</a>
     </div>
   </form>
   <AppAlert v-else>Brak danych</AppAlert>

@@ -14,7 +14,7 @@ a.logo {
   color: black;
 }
 a.logo:hover {
-  color: red;
+  color: #516190;
 }
 
 .router-link-active {
@@ -26,6 +26,7 @@ a.logo:hover {
 .btn {
   color: #1e40af;
   border-bottom: 1px solid #1e40af;
+  padding-bottom: 0.1rem;
 }
 .btn:hover {
   border-bottom: 0;

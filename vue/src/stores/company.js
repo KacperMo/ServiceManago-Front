@@ -49,5 +49,18 @@ export const useCompanyStore = defineStore("company", () => {
     return { err, data };
   }
 
-  return { all, getOne, update };
+  async function destroy(urlFragment, id) {
+    let err = null; // { message: "Some error" };
+    let data = null;
+    try {
+      data = await axios.delete(urlFragment + "\\" + id);
+    } catch (e) {
+      console.log(e);
+      err = e;
+    }
+
+    return { err, data };
+  }
+
+  return { all, getOne, update, destroy };
 });
