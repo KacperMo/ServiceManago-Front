@@ -16,7 +16,7 @@ defineEmits(["update:modelValue"]);
     :type="type"
     :name="name"
     :id="id"
-    class="border border-gray-900 hover:border-black focus:outline-none focus:border-black p-1 w-6/12"
+    class="border border-gray-900 hover:border-black focus:outline-none focus:border-black p-1 w-full"
     :placeholder="placeholder"
   />
 </template>
