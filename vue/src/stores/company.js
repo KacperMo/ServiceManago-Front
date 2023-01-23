@@ -33,6 +33,28 @@ export const useCompanyStore = defineStore("company", () => {
     return { err, data };
   }
 
+  async function store(urlFragment, payload) {
+    let err = null;
+    // let validationErr;
+    let data = null;
+    try {
+      data = await axios.post(urlFragment, payload);
+    } catch (e) {
+      console.log(e);
+      err = e;
+      if (e.response?.data) {
+        console.log(e.response.data.message);
+        err.message = e.response.data.message;
+        // validationErrors.value = e.response.data.errors;
+        // validationErr = e.response.data.errors;
+      }
+    }
+
+    // console.log(err);
+
+    return { err, data }; //  validationErr
+  }
+
   async function update(urlFragment, id, payload) {
     let err = null;
     let data = null;
@@ -62,5 +84,5 @@ export const useCompanyStore = defineStore("company", () => {
     return { err, data };
   }
 
-  return { all, getOne, update, destroy };
+  return { all, getOne, store, update, destroy };
 });

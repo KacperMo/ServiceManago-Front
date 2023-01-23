@@ -20,12 +20,17 @@ const router = createRouter({
       component: () => import("../views/Company/IndexView.vue"),
     },
     {
+      path: "/firmy/create",
+      name: "companies.create",
+      component: () => import("../views/Company/CreateView.vue"),
+    },
+    {
       path: "/firmy/:id",
       name: "companies.show",
       component: () => import("../views/Company/ShowView.vue"),
     },
     {
-      path: "/firmy/:id/edytuj",
+      path: "/firmy/:id/edit",
       name: "companies.edit",
       component: () => import("../views/Company/EditView.vue"),
     },

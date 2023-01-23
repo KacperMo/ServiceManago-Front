@@ -14,6 +14,9 @@ const { err, collection } = await store.all("companies");
 <template>
   <HeaderTwo>Firmy</HeaderTwo>
   <AppAlert v-if="err" type="danger">{{ err.message }}</AppAlert>
+  <div class="mb-5">
+    <RouterLink :to="{ name: 'companies.create' }">Dodaj</RouterLink>
+  </div>
   <table v-if="collection.length" class="w-full text-left">
     <thead>
       <TableHeaderRow>

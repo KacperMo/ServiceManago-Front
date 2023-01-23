@@ -70,8 +70,10 @@ const destroy = async (id) => {
       />
     </div>
     <div>
-      <button type="submit">Wyślij</button> |
-      <a @click="destroy(company.id)" href="#usun" class="">Delete</a>
+      <button type="submit">Wyślij</button>
+      <a @click="destroy(company.id)" href="#delete" class="btn btn-danger ml-3"
+        >Usuń</a
+      >
     </div>
   </form>
   <AppAlert v-else>Brak danych</AppAlert>
