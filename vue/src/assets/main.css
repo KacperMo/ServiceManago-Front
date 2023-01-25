@@ -33,6 +33,6 @@ a.logo:hover {
   color: black;
 }
 .btn-danger {
-  color: red;
-  border-bottom: 1px solid red;
+  color: #ef4444;
+  border-bottom: 1px solid #ef4444;
 }

@@ -9,5 +9,11 @@
     <div>
       <RouterLink :to="{ name: 'companies.index' }">Firmy</RouterLink>
     </div>
+    <div v-if="!$router.currentRoute.value.meta.isLoggedIn">
+      <RouterLink :to="{ name: 'login' }">Zaloguj</RouterLink>
+    </div>
+    <div v-if="$router.currentRoute.value.meta.isLoggedIn">
+      <RouterLink :to="{ name: 'logout' }">Wyloguj</RouterLink>
+    </div>
   </div>
 </template>

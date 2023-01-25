@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 import axios from "axios";
 
 export const useCompanyStore = defineStore("company", () => {
-  axios.defaults.baseURL = "http://127.0.0.1:3333/";
+  // axios.defaults.baseURL = "http://127.0.0.1:3333/";
 
   async function all(urlFragment) {
     let collection = [];
