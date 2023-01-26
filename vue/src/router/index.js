@@ -65,7 +65,6 @@ const router = createRouter({
 router.beforeEach((to, from) => {
   const store = useAuthStore();
   const isGuest = store.isGuest;
-  to.meta.isLoggedIn = store.isLoggedIn;
   if (to.meta.auth === true && isGuest && to.name !== "login") {
     return { name: "login" };
   }

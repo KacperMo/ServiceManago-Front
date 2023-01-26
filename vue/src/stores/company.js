@@ -1,30 +1,40 @@
 import { defineStore } from "pinia";
 import axios from "axios";
+import { useAuthStore } from "./auth";
 
 export const useCompanyStore = defineStore("company", () => {
-  // axios.defaults.baseURL = "http://127.0.0.1:3333/";
-
   async function all(urlFragment) {
+    const authStore = useAuthStore();
     let collection = [];
     let err = null;
+    let resStatus = null;
     try {
-      const res = await axios(urlFragment);
+      const res = await axios(urlFragment, {
+        headers: {
+          Authorization: `Bearer ${authStore.token}`,
+        },
+      });
       collection = res.data;
     } catch (e) {
       err = e;
-      // if (e.response) {
-      //   responseStatus = e.response.status;
-      // }
+      if (e.response) {
+        resStatus = e.response.status;
+      }
     }
 
-    return { err, collection };
+    return { err, resStatus, collection };
   }
 
   async function getOne(urlFragment, id) {
+    const authStore = useAuthStore();
     let err = null;
     let data = null;
     try {
-      const res = await axios(`${urlFragment}/${id}`);
+      const res = await axios(`${urlFragment}/${id}`, {
+        headers: {
+          Authorization: `Bearer ${authStore.token}`,
+        },
+      });
       data = res.data;
     } catch (e) {
       err = e;
@@ -34,41 +44,45 @@ export const useCompanyStore = defineStore("company", () => {
   }
 
   async function store(urlFragment, payload) {
+    const authStore = useAuthStore();
     let err = null;
     let validationErr = [];
     let data = null;
     try {
-      data = await axios.post(urlFragment, payload);
+      data = await axios.post(urlFragment, payload, {
+        headers: {
+          Authorization: `Bearer ${authStore.token}`,
+        },
+      });
     } catch (e) {
-      // console.log(e);
       err = e;
       if (e.response?.data.message) {
-        console.log(e.response.data.message);
         err.message = e.response.data.message;
         // validationErrors.value = e.response.data.errors;
         // validationErr = e.response.data.errors;
       }
       if (e.response?.data.errors) {
-        console.log(e.response.data.errors);
         // err.message = e.response.data.message;
         validationErr = e.response.data.errors;
         // validationErr = e.response.data.errors;
       }
     }
 
-    // console.log(err);
-
-    return { err, validationErr, data }; //  validationErr
+    return { err, validationErr, data };
   }
 
   async function update(urlFragment, id, payload) {
+    const authStore = useAuthStore();
     let err = null;
     let data = null;
     try {
-      data = await axios.put(urlFragment + "\\" + id, payload);
+      data = await axios.put(urlFragment + "\\" + id, payload, {
+        headers: {
+          Authorization: `Bearer ${authStore.token}`,
+        },
+      });
     } catch (e) {
-      console.log(e);
-      // err = e;
+      err = e;
       // if (e.response?.data) {
       //   validationErr = e.response.data.errors;
       // }
@@ -78,10 +92,15 @@ export const useCompanyStore = defineStore("company", () => {
   }
 
   async function destroy(urlFragment, id) {
-    let err = null; // { message: "Some error" };
+    const authStore = useAuthStore();
+    let err = null;
     let data = null;
     try {
-      data = await axios.delete(urlFragment + "\\" + id);
+      data = await axios.delete(urlFragment + "\\" + id, {
+        headers: {
+          Authorization: `Bearer ${authStore.token}`,
+        },
+      });
     } catch (e) {
       console.log(e);
       err = e;

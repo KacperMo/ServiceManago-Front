@@ -50,4 +50,7 @@ const onSubmit = async () => {
     </InputGroup>
     <button type="submit">Wyślij</button>
   </form>
+  <p class="mt-3">
+    <RouterLink :to="{ name: 'register' }">Załóż konto</RouterLink>
+  </p>
 </template>
