@@ -4,8 +4,13 @@ import axios from "axios";
 
 export const useAuthStore = defineStore("auth", () => {
   const tokenName = "stoken";
+  const idName = "sid";
+  const emailName = "semail";
   const token = ref(localStorage.getItem(tokenName) || null);
-  let user = reactive({});
+  let user = reactive({
+    id: localStorage.getItem(idName) || null,
+    email: localStorage.getItem(emailName) || null,
+  });
 
   const isLoggedIn = computed(() => {
     if (token.value == null) {
@@ -33,6 +38,8 @@ export const useAuthStore = defineStore("auth", () => {
       user.id = res.data.user.id;
       user.email = res.data.user.email;
       localStorage.setItem(tokenName, res.data.token.token);
+      localStorage.setItem(idName, res.data.user.id);
+      localStorage.setItem(emailName, res.data.user.email);
     } catch (e) {
       err = e.message;
       if (e.response) {
@@ -49,6 +56,8 @@ export const useAuthStore = defineStore("auth", () => {
     try {
       token.value = null;
       localStorage.removeItem(tokenName);
+      localStorage.removeItem(idName);
+      localStorage.removeItem(emailName);
       delete user.id;
       delete user.email;
       res = await axios.post("logout");
@@ -67,7 +76,11 @@ export const useAuthStore = defineStore("auth", () => {
     try {
       res = await axios.post("register", payload);
       token.value = res.data.token.token;
+      user.id = res.data.user.id;
+      user.email = res.data.user.email;
       localStorage.setItem(tokenName, res.data.token.token);
+      localStorage.setItem(idName, res.data.user.id);
+      localStorage.setItem(emailName, res.data.user.email);
     } catch (e) {
       err = e.message;
       validationErr = e.response?.data.errors;
