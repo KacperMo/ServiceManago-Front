@@ -4,7 +4,9 @@ import { useRoute, useRouter } from "vue-router";
 import { useCompanyStore } from "@/stores/company.js";
 import AppAlert from "@/components/AppAlert.vue";
 import HeaderTwo from "@/components/HeaderTwo.vue";
+import InputGroup from "@/components/InputGroup.vue";
 import InputField from "@/components/InputField.vue";
+import InputButton from "@/components/InputButton.vue";
 
 const route = useRoute();
 const router = useRouter();
@@ -53,28 +55,26 @@ const destroy = async (id) => {
   <HeaderTwo>Edycja</HeaderTwo>
   <AppAlert v-if="error" type="danger">{{ error.message }}</AppAlert>
   <form v-if="data" @submit.prevent="onSubmit">
-    <div class="mb-1">
+    <InputGroup>
       <InputField
         v-model="company.name"
         name="name"
         id="name"
         placeholder="Nazwa firmy"
       />
-    </div>
-    <div class="mb-1">
+    </InputGroup>
+    <InputGroup>
       <InputField
         v-model="company.city"
         name="city"
         id="city"
         placeholder="Miasto"
       />
-    </div>
-    <div>
-      <button type="submit">Wyślij</button>
-      <a @click="destroy(company.id)" href="#delete" class="btn btn-danger ml-3"
-        >Usuń</a
-      >
-    </div>
+    </InputGroup>
+    <InputButton />
+    <a @click="destroy(company.id)" href="#delete" class="btn btn-danger ml-3"
+      >Usuń</a
+    >
   </form>
   <AppAlert v-else>Brak danych</AppAlert>
   <p class="py-3">

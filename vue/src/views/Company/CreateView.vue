@@ -1,14 +1,15 @@
 <script setup>
 import { ref, reactive } from "vue";
-import { useRoute, useRouter } from "vue-router";
+import { useRouter } from "vue-router";
 import { useCompanyStore } from "@/stores/company.js";
 import AppAlert from "@/components/AppAlert.vue";
 import HeaderTwo from "@/components/HeaderTwo.vue";
+import InputGroup from "@/components/InputGroup.vue";
 import InputField from "@/components/InputField.vue";
+import InputButton from "@/components/InputButton.vue";
 import ValidationError from "@/components/ValidationError.vue";
 
 const store = useCompanyStore();
-// const route = useRoute();
 const router = useRouter();
 const error = ref(null);
 const validationErrors = ref([]);
@@ -32,10 +33,9 @@ const onSubmit = async () => {
 <template>
   <HeaderTwo>Dodawanie</HeaderTwo>
   <AppAlert v-if="error" type="danger">{{ error.message }}</AppAlert>
-  <!-- <pre>{{ validationErrors }}</pre> -->
   <form @submit.prevent="onSubmit">
     <div>
-      <div class="mb-1 w-6/12">
+      <InputGroup>
         <InputField
           v-model="company.name"
           name="name"
@@ -47,8 +47,8 @@ const onSubmit = async () => {
             <ValidationError>{{ e.message }}</ValidationError>
           </template>
         </template>
-      </div>
-      <div class="mb-1 w-6/12">
+      </InputGroup>
+      <InputGroup>
         <InputField
           v-model="company.city"
           name="city"
@@ -60,11 +60,11 @@ const onSubmit = async () => {
             <ValidationError>{{ e.message }}</ValidationError>
           </template>
         </template>
-      </div>
+      </InputGroup>
       <RouterLink :to="{ name: 'companies.index' }" class="btn mr-3"
         >Powrót</RouterLink
       >
-      <button type="submit">Wyślij</button>
+      <InputButton />
     </div>
   </form>
 </template>

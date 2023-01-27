@@ -8,15 +8,15 @@ import AppFooter from "@/components/AppFooter.vue";
 <template>
   <div class="flex">
     <div
-      class="w-1/5 mr-1 p-2 font-bold text-sm sm:text-sm md:text-sm lg:text-base xl:text-base 2xl:text-base"
+      class="w-1/5 mr-1 mt-1 p-2 border-t-[1px] border-gray-500 font-bold text-sm sm:text-sm md:text-sm lg:text-base xl:text-base 2xl:text-base"
     >
       <RouterLink :to="{ name: 'home' }" class="logo">ServiceManago</RouterLink>
     </div>
-    <div class="w-4/5 py-2">&mdash;</div>
+    <div class="w-4/5 mt-1 py-2 border-t-[1px] border-gray-500">&mdash;</div>
   </div>
   <div class="flex">
     <AppNav />
-    <div class="w-4/5 py-2 border-t-[1px] border-black">
+    <div class="w-4/5 py-2 border-t-[1px] border-gray-500">
       <RouterView v-slot="{ Component }">
         <template v-if="Component">
           <KeepAlive>

@@ -6,7 +6,7 @@ console.log("foo user", store.token);
 </script>
 
 <template>
-  <div class="w-1/5 mr-1 p-2 border-t-[1px] border-black">
+  <div class="w-1/5 mr-1 p-2 border-t-[1px] border-gray-500">
     <div>
       <RouterLink :to="{ name: 'home' }">Strona główna</RouterLink>
     </div>

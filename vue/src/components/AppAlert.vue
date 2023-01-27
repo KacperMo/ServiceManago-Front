@@ -2,10 +2,7 @@
 import { computed } from "vue";
 
 const props = defineProps({
-  type: {
-    type: String,
-    default: "primary",
-  },
+  type: { type: String, default: "primary" },
 });
 
 const alertClass = computed(() => {
@@ -18,7 +15,7 @@ const alertClass = computed(() => {
 </script>
 
 <template>
-  <div :class="alertClass" class="mb-1 px-1 py-1">
+  <div :class="alertClass" class="mb-1 mr-1 px-1 py-1">
     <slot />
   </div>
 </template>

@@ -4,6 +4,7 @@
 
 body {
   font-family: "Inconsolata", monospace;
+  color: #1f2937;
 }
 
 a:hover {
@@ -14,7 +15,7 @@ a.logo {
   color: black;
 }
 a.logo:hover {
-  color: #516190;
+  color: #1e40af;
 }
 
 .router-link-active {
