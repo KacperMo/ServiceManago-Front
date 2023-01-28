@@ -74,6 +74,7 @@ export const useCompanyStore = defineStore("company", () => {
   async function update(urlFragment, id, payload) {
     const authStore = useAuthStore();
     let err = null;
+    let validationErr = [];
     let data = null;
     try {
       data = await axios.put(urlFragment + "\\" + id, payload, {
@@ -86,9 +87,12 @@ export const useCompanyStore = defineStore("company", () => {
       // if (e.response?.data) {
       //   validationErr = e.response.data.errors;
       // }
+      if (e.response?.data.errors) {
+        validationErr = e.response.data.errors;
+      }
     }
 
-    return { err, data };
+    return { err, validationErr, data };
   }
 
   async function destroy(urlFragment, id) {

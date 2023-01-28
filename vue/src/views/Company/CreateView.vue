@@ -34,37 +34,35 @@ const onSubmit = async () => {
   <HeaderTwo>Dodawanie</HeaderTwo>
   <AppAlert v-if="error" type="danger">{{ error.message }}</AppAlert>
   <form @submit.prevent="onSubmit">
-    <div>
-      <InputGroup>
-        <InputField
-          v-model="company.name"
-          name="name"
-          id="name"
-          placeholder="Nazwa firmy"
-        />
-        <template v-for="e in validationErrors" :key="e.field">
-          <template v-if="e.field == 'name'">
-            <ValidationError>{{ e.message }}</ValidationError>
-          </template>
+    <InputGroup>
+      <InputField
+        v-model="company.name"
+        name="name"
+        id="name"
+        placeholder="Nazwa firmy"
+      />
+      <template v-for="e in validationErrors" :key="e.field">
+        <template v-if="e.field == 'name'">
+          <ValidationError>{{ e.message }}</ValidationError>
         </template>
-      </InputGroup>
-      <InputGroup>
-        <InputField
-          v-model="company.city"
-          name="city"
-          id="city"
-          placeholder="Miasto"
-        />
-        <template v-for="e in validationErrors" :key="e.field">
-          <template v-if="e.field == 'city'">
-            <ValidationError>{{ e.message }}</ValidationError>
-          </template>
+      </template>
+    </InputGroup>
+    <InputGroup>
+      <InputField
+        v-model="company.city"
+        name="city"
+        id="city"
+        placeholder="Miasto"
+      />
+      <template v-for="e in validationErrors" :key="e.field">
+        <template v-if="e.field == 'city'">
+          <ValidationError>{{ e.message }}</ValidationError>
         </template>
-      </InputGroup>
-      <RouterLink :to="{ name: 'companies.index' }" class="btn mr-3"
-        >Powrót</RouterLink
-      >
-      <InputButton />
-    </div>
+      </template>
+    </InputGroup>
+    <RouterLink :to="{ name: 'companies.index' }" class="btn mr-3"
+      >Powrót</RouterLink
+    >
+    <InputButton />
   </form>
 </template>

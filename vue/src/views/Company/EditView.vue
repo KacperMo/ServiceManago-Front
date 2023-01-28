@@ -7,6 +7,7 @@ import HeaderTwo from "@/components/HeaderTwo.vue";
 import InputGroup from "@/components/InputGroup.vue";
 import InputField from "@/components/InputField.vue";
 import InputButton from "@/components/InputButton.vue";
+import ValidationError from "@/components/ValidationError.vue";
 
 const route = useRoute();
 const router = useRouter();
@@ -15,29 +16,34 @@ const error = ref(null);
 
 const { err: error1, data } = await store.getOne("companies", route.params.id);
 error.value = error1;
-
+const validationErrors = ref([]);
 const company = reactive({
+  industry_id: 1,
+  owner_id: 1,
   id: data?.id,
   name: data?.name,
   city: data?.city,
 });
 
 const onSubmit = async () => {
-  // console.log("on submit");
-  // console.log(company);
   const editingCompany = {
+    industry_id: 1,
+    owner_id: 1,
     id: company.id,
     name: company.name,
     city: company.city,
   };
-  const { err: error1, data } = await store.update(
-    "companies",
-    company.id,
-    editingCompany
-  );
-  error.value = error1;
 
-  if (data.status == 200) {
+  const {
+    err: error1,
+    validationErr,
+    data,
+  } = await store.update("companies", company.id, editingCompany);
+
+  error.value = error1;
+  validationErrors.value = validationErr;
+
+  if (data?.status == 200) {
     router.push({ name: "companies.show", params: { id: company.id } });
   }
 };
@@ -62,6 +68,11 @@ const destroy = async (id) => {
         id="name"
         placeholder="Nazwa firmy"
       />
+      <template v-for="e in validationErrors" :key="e.field">
+        <template v-if="e.field == 'name'">
+          <ValidationError>{{ e.message }}</ValidationError>
+        </template>
+      </template>
     </InputGroup>
     <InputGroup>
       <InputField
@@ -70,6 +81,11 @@ const destroy = async (id) => {
         id="city"
         placeholder="Miasto"
       />
+      <template v-for="e in validationErrors" :key="e.field">
+        <template v-if="e.field == 'city'">
+          <ValidationError>{{ e.message }}</ValidationError>
+        </template>
+      </template>
     </InputGroup>
     <InputButton />
     <a @click="destroy(company.id)" href="#delete" class="btn btn-danger ml-3"
