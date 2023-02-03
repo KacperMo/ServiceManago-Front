@@ -18,7 +18,7 @@ const { err: error1, data } = await store.getOne("companies", route.params.id);
 error.value = error1;
 const validationErrors = ref([]);
 const company = reactive({
-  industry_id: 1,
+  industryId: data?.industryId,
   owner_id: 1,
   id: data?.id,
   name: data?.name,
@@ -27,7 +27,7 @@ const company = reactive({
 
 const onSubmit = async () => {
   const editingCompany = {
-    industry_id: 1,
+    industryId: 1,
     owner_id: 1,
     id: company.id,
     name: company.name,

@@ -21,16 +21,20 @@ const { err, resStatus, collection } = await store.all("companies");
     <thead>
       <TableHeaderRow>
         <TableHeader>#</TableHeader>
+        <TableHeader>Gałąź</TableHeader>
+        <TableHeader>Kategoria</TableHeader>
         <TableHeader>Nazwa</TableHeader>
         <TableHeader>Miasto</TableHeader>
         <TableHeader>Numer telefonu</TableHeader>
-        <TableHeader>Utworzono</TableHeader>
-        <TableHeader>Zaktualizowano</TableHeader>
+        <!-- <TableHeader>Utworzono</TableHeader>
+        <TableHeader>Zaktualizowano</TableHeader> -->
       </TableHeaderRow>
     </thead>
     <tbody>
       <tr v-for="company in collection" :key="company.id">
         <TableData>{{ company.id }}</TableData>
+        <TableData>{{ company.industry?.name }}</TableData>
+        <TableData>{{ company.category?.name }}</TableData>
         <TableData>
           <RouterLink
             :to="{ name: 'companies.show', params: { id: company.id } }"
@@ -39,8 +43,8 @@ const { err, resStatus, collection } = await store.all("companies");
         </TableData>
         <TableData>{{ company.city }}</TableData>
         <TableData>{{ company.phone_number }}</TableData>
-        <TableData>{{ company.created_at }}</TableData>
-        <TableData>{{ company.updated_at }}</TableData>
+        <!-- <TableData>{{ company.created_at }}</TableData>
+        <TableData>{{ company.updated_at }}</TableData> -->
       </tr>
     </tbody>
   </table>

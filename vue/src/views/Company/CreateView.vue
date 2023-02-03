@@ -14,7 +14,7 @@ const router = useRouter();
 const error = ref(null);
 const validationErrors = ref([]);
 const company = reactive({
-  industry_id: 1,
+  industryId: 1,
   owner_id: 1,
   name: "",
   city: "",
