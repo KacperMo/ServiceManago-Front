@@ -13,6 +13,7 @@ const store = useCompanyStore();
 const router = useRouter();
 const error = ref(null);
 const validationErrors = ref([]);
+const industryId = ref(0);
 const company = reactive({
   industryId: 1,
   owner_id: 1,
@@ -20,7 +21,16 @@ const company = reactive({
   city: "",
 });
 
+const {
+  err,
+  resStatus,
+  collection: industries,
+} = await store.all("industries");
+// console.log(err, resStatus, industries);
+
 const onSubmit = async () => {
+  company.industryId = industryId.value;
+  console.log(company);
   const { err, validationErr, data } = await store.store("companies", company);
   error.value = err;
   validationErrors.value = validationErr;
@@ -33,7 +43,22 @@ const onSubmit = async () => {
 <template>
   <HeaderTwo>Dodawanie</HeaderTwo>
   <AppAlert v-if="error" type="danger">{{ error.message }}</AppAlert>
+  <!-- <div>{{ industries }}</div> -->
+  <div>Selected: {{ industryId }}</div>
+
   <form @submit.prevent="onSubmit">
+    <InputGroup>
+      <select v-model="industryId">
+        <option disabled value="">Wybierz</option>
+        <option
+          v-for="industry in industries"
+          :key="industry.id"
+          :value="industry.id"
+        >
+          {{ industry.name }}
+        </option>
+      </select>
+    </InputGroup>
     <InputGroup>
       <InputField
         v-model="company.name"
