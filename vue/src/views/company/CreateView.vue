@@ -6,6 +6,7 @@ import AppAlert from "@/components/AppAlert.vue";
 import HeaderTwo from "@/components/HeaderTwo.vue";
 import InputGroup from "@/components/InputGroup.vue";
 import InputField from "@/components/InputField.vue";
+import InputSelect from "@/components/InputSelect.vue";
 import InputButton from "@/components/InputButton.vue";
 import ValidationError from "@/components/ValidationError.vue";
 
@@ -13,7 +14,7 @@ const store = useCompanyStore();
 const router = useRouter();
 const error = ref(null);
 const validationErrors = ref([]);
-const industryId = ref(0);
+const industryId = ref("0");
 const company = reactive({
   industryId: 1,
   owner_id: 1,
@@ -30,7 +31,7 @@ const {
 
 const onSubmit = async () => {
   company.industryId = industryId.value;
-  console.log(company);
+  // console.log(company);
   const { err, validationErr, data } = await store.store("companies", company);
   error.value = err;
   validationErrors.value = validationErr;
@@ -43,29 +44,16 @@ const onSubmit = async () => {
 <template>
   <HeaderTwo>Dodawanie</HeaderTwo>
   <AppAlert v-if="error" type="danger">{{ error.message }}</AppAlert>
-  <!-- <div>{{ industries }}</div> -->
-  <div>Selected: {{ industryId }}</div>
-
   <form @submit.prevent="onSubmit">
     <InputGroup>
-      <select v-model="industryId">
-        <option disabled value="">Wybierz</option>
-        <option
-          v-for="industry in industries"
-          :key="industry.id"
-          :value="industry.id"
-        >
-          {{ industry.name }}
-        </option>
-      </select>
+      <InputSelect
+        v-model="industryId"
+        :items="industries"
+        id="industryId"
+      ></InputSelect>
     </InputGroup>
     <InputGroup>
-      <InputField
-        v-model="company.name"
-        name="name"
-        id="name"
-        placeholder="Nazwa firmy"
-      />
+      <InputField v-model="company.name" id="name" placeholder="Nazwa firmy" />
       <template v-for="e in validationErrors" :key="e.field">
         <template v-if="e.field == 'name'">
           <ValidationError>{{ e.message }}</ValidationError>
@@ -73,12 +61,7 @@ const onSubmit = async () => {
       </template>
     </InputGroup>
     <InputGroup>
-      <InputField
-        v-model="company.city"
-        name="city"
-        id="city"
-        placeholder="Miasto"
-      />
+      <InputField v-model="company.city" id="city" placeholder="Miasto" />
       <template v-for="e in validationErrors" :key="e.field">
         <template v-if="e.field == 'city'">
           <ValidationError>{{ e.message }}</ValidationError>

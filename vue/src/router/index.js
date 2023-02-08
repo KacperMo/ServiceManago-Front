@@ -20,25 +20,25 @@ const router = createRouter({
     {
       path: "/firmy",
       name: "companies.index",
-      component: () => import("../views/Company/IndexView.vue"),
+      component: () => import("../views/company/IndexView.vue"),
       meta: { auth: true },
     },
     {
       path: "/firmy/create",
       name: "companies.create",
-      component: () => import("../views/Company/CreateView.vue"),
+      component: () => import("../views/company/CreateView.vue"),
       meta: { auth: true },
     },
     {
       path: "/firmy/:id",
       name: "companies.show",
-      component: () => import("../views/Company/ShowView.vue"),
+      component: () => import("../views/company/ShowView.vue"),
       meta: { auth: true },
     },
     {
       path: "/firmy/:id/edit",
       name: "companies.edit",
-      component: () => import("../views/Company/EditView.vue"),
+      component: () => import("../views/company/EditView.vue"),
       meta: { auth: true },
     },
     {
