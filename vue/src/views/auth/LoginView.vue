@@ -30,13 +30,7 @@ const onSubmit = async () => {
   <AppAlert v-if="error" type="danger">{{ error }}</AppAlert>
   <form @submit.prevent="onSubmit">
     <InputGroup>
-      <InputField
-        v-model="email"
-        name="login"
-        id="login"
-        placeholder="Login"
-        autofocus="true"
-      />
+      <InputField v-model="email" name="login" id="login" placeholder="Login" />
     </InputGroup>
     <InputGroup>
       <InputField
@@ -44,6 +38,7 @@ const onSubmit = async () => {
         name="password"
         id="password"
         placeholder="Hasło"
+        type="password"
       />
     </InputGroup>
     <button type="submit">Wyślij</button>

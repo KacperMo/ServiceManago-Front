@@ -14,6 +14,6 @@ if (res?.data.revoked) {
 </script>
 
 <template>
-  <HeaderTwo>Wylgowanie</HeaderTwo>
+  <HeaderTwo>Wylogowanie</HeaderTwo>
   <AppAlert v-if="err" type="danger">{{ err }}</AppAlert>
 </template>

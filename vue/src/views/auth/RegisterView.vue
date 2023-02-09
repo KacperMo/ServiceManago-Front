@@ -10,15 +10,15 @@ import ValidationError from "@/components/ValidationError.vue";
 
 const router = useRouter();
 const store = useAuthStore();
-const email = ref("staszek@tlen.pl");
-const password = ref("12345678");
+const email = ref("");
+const password = ref("");
 const errorMessage = ref("");
 const validationErrors = ref([]);
 const response = ref("");
 
 const onSubmit = async () => {
   const payload = { email: email.value, password: password.value };
-  const { err, validationErr, data, res } = await store.register(payload);
+  const { err, validationErr, res } = await store.register(payload);
   errorMessage.value = err;
   validationErrors.value = validationErr;
   response.value = res;
@@ -39,7 +39,6 @@ const onSubmit = async () => {
         name="login"
         id="login"
         placeholder="Login"
-        autofocus="true"
       />
       <template v-for="e in validationErrors" :key="e.field">
         <template v-if="e.field == 'email'">
@@ -50,6 +49,7 @@ const onSubmit = async () => {
     <InputGroup>
       <InputField
         v-model="password"
+        type="password"
         name="password"
         id="password"
         placeholder="Hasło"

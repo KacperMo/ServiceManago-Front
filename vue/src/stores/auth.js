@@ -78,7 +78,6 @@ export const useAuthStore = defineStore("auth", () => {
   async function register(payload) {
     let err = "";
     let validationErr = "";
-    let data = "";
     let res = null;
     try {
       res = await axios.post("register", payload);
@@ -89,12 +88,14 @@ export const useAuthStore = defineStore("auth", () => {
       localStorage.setItem(idName, res.data.user.id);
       localStorage.setItem(emailName, res.data.user.email);
     } catch (e) {
-      err = e.message;
+      if (e.response?.status != 422) {
+        // do not display generic error when validation error are occurs
+        err = e.message;
+      }
       validationErr = e.response?.data.errors;
-      data = e.response?.data;
     }
 
-    return { err, validationErr, data, res };
+    return { err, validationErr, res };
   }
 
   return { token, user, isLoggedIn, isGuest, login, logout, register };
