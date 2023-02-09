@@ -1,7 +1,7 @@
 <script setup>
 import { ref, reactive } from "vue";
 import { useRouter } from "vue-router";
-import { useCompanyStore } from "@/stores/company.js";
+import { useStore } from "@/stores/store.js";
 import AppAlert from "@/components/AppAlert.vue";
 import HeaderTwo from "@/components/HeaderTwo.vue";
 import InputGroup from "@/components/InputGroup.vue";
@@ -10,7 +10,7 @@ import InputSelect from "@/components/InputSelect.vue";
 import InputButton from "@/components/InputButton.vue";
 import ValidationError from "@/components/ValidationError.vue";
 
-const store = useCompanyStore();
+const store = useStore();
 const router = useRouter();
 const error = ref(null);
 const validationErrors = ref([]);

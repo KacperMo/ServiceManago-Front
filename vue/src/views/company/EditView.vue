@@ -1,7 +1,7 @@
 <script setup>
 import { ref, reactive } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import { useCompanyStore } from "@/stores/company.js";
+import { useStore } from "@/stores/store.js";
 import AppAlert from "@/components/AppAlert.vue";
 import HeaderTwo from "@/components/HeaderTwo.vue";
 import InputGroup from "@/components/InputGroup.vue";
@@ -11,7 +11,7 @@ import ValidationError from "@/components/ValidationError.vue";
 
 const route = useRoute();
 const router = useRouter();
-const store = useCompanyStore();
+const store = useStore();
 const error = ref(null);
 
 const { err: error1, data } = await store.getOne("companies", route.params.id);

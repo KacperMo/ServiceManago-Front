@@ -1,12 +1,12 @@
 <script setup>
-import { useCompanyStore } from "@/stores/company.js";
+import { useStore } from "@/stores/store.js";
 import AppAlert from "@/components/AppAlert.vue";
 import HeaderTwo from "@/components/HeaderTwo.vue";
 import TableHeader from "@/components/TableHeader.vue";
 import TableHeaderRow from "@/components/TableHeaderRow.vue";
 import TableData from "@/components/TableData.vue";
 
-const store = useCompanyStore();
+const store = useStore();
 
 const { err, resStatus, collection } = await store.all("companies");
 </script>

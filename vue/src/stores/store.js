@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 import axios from "axios";
 import { useAuthStore } from "./auth";
 
-export const useCompanyStore = defineStore("company", () => {
+export const useStore = defineStore("store", () => {
   async function all(urlFragment) {
     const authStore = useAuthStore();
     let collection = [];

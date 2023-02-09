@@ -1,12 +1,12 @@
 <script setup>
 import { useRoute } from "vue-router";
-import { useCompanyStore } from "@/stores/company.js";
+import { useStore } from "@/stores/store.js";
 import AppAlert from "@/components/AppAlert.vue";
 import HeaderTwo from "@/components/HeaderTwo.vue";
 import TableData from "@/components/TableData.vue";
 
 const route = useRoute();
-const store = useCompanyStore();
+const store = useStore();
 
 const { err, data } = await store.getOne("companies", route.params.id);
 </script>
