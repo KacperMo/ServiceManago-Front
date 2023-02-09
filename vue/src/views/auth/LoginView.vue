@@ -12,14 +12,12 @@ const store = useAuthStore();
 const email = ref("");
 const password = ref("");
 const error = ref("");
-const errorMessage = ref("");
 const response = ref("");
 
 const onSubmit = async () => {
   const payload = { email: email.value, password: password.value };
-  const { err, data, res } = await store.login(payload);
+  const { err, res } = await store.login(payload);
   error.value = err;
-  errorMessage.value = data;
   response.value = res;
   if (response.value?.status === 200) {
     router.push({ name: "home" });
@@ -29,7 +27,7 @@ const onSubmit = async () => {
 
 <template>
   <HeaderTwo>Logowanie</HeaderTwo>
-  <AppAlert v-if="errorMessage" type="danger">{{ errorMessage }}</AppAlert>
+  <AppAlert v-if="error" type="danger">{{ error }}</AppAlert>
   <form @submit.prevent="onSubmit">
     <InputGroup>
       <InputField

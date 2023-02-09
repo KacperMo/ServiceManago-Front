@@ -7,6 +7,7 @@ export const useAuthStore = defineStore("auth", () => {
   const idName = "sid";
   const emailName = "semail";
   const token = ref(localStorage.getItem(tokenName) || null);
+
   let user = reactive({
     id: localStorage.getItem(idName) || null,
     email: localStorage.getItem(emailName) || null,
@@ -30,7 +31,6 @@ export const useAuthStore = defineStore("auth", () => {
 
   async function login(payload) {
     let err = "";
-    let data = "";
     let res = null;
     try {
       res = await axios.post("login", payload);
@@ -41,13 +41,20 @@ export const useAuthStore = defineStore("auth", () => {
       localStorage.setItem(idName, res.data.user.id);
       localStorage.setItem(emailName, res.data.user.email);
     } catch (e) {
-      err = e.message;
-      if (e.response) {
-        data = e.response.data;
+      if (e.response?.status == 401) {
+        // wrong login or pass
+        err = e.response.data;
+      } else {
+        // network error or other
+        err = e.message;
+        if (e.response?.data.message) {
+          err += ". ";
+          err += e.response?.data.message;
+        }
       }
     }
 
-    return { err, data, res };
+    return { err, res };
   }
 
   async function logout() {
