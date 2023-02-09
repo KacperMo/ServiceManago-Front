@@ -7,7 +7,6 @@ export const useStore = defineStore("store", () => {
     const authStore = useAuthStore();
     let collection = [];
     let err = null;
-    let resStatus = null;
     try {
       const res = await axios(urlFragment, {
         headers: {
@@ -16,13 +15,14 @@ export const useStore = defineStore("store", () => {
       });
       collection = res.data;
     } catch (e) {
-      err = e;
-      if (e.response) {
-        resStatus = e.response.status;
+      err = e.message;
+      if (e.response?.data.message) {
+        err += ". ";
+        err += e.response?.data.message;
       }
     }
 
-    return { err, resStatus, collection };
+    return { err, collection };
   }
 
   async function getOne(urlFragment, id) {

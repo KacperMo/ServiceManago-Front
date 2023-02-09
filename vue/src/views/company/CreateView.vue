@@ -22,12 +22,17 @@ const company = reactive({
   city: "",
 });
 
-const {
-  err,
-  resStatus,
-  collection: industries,
-} = await store.all("industries");
-// console.log(err, resStatus, industries);
+const { err: industryError, collection: industries } = await store.all(
+  "industries"
+);
+error.value = industryError;
+// console.log(error.value, industries);
+
+const { err: categoryError, collection: categories } = await store.all(
+  "categories"
+);
+error.value = categoryError;
+// console.log(error.value, categories);
 
 const onSubmit = async () => {
   company.industryId = industryId.value;
@@ -43,7 +48,7 @@ const onSubmit = async () => {
 
 <template>
   <HeaderTwo>Dodawanie</HeaderTwo>
-  <AppAlert v-if="error" type="danger">{{ error.message }}</AppAlert>
+  <AppAlert v-if="error" type="danger">{{ error }}</AppAlert>
   <form @submit.prevent="onSubmit">
     <InputGroup>
       <InputSelect

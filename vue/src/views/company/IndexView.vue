@@ -8,13 +8,13 @@ import TableData from "@/components/TableData.vue";
 
 const store = useStore();
 
-const { err, resStatus, collection } = await store.all("companies");
+const { err, collection } = await store.all("companies");
 </script>
 
 <template>
   <HeaderTwo>Firmy</HeaderTwo>
   <AppAlert v-if="err" type="danger">{{ err.message }}</AppAlert>
-  <div v-if="resStatus != 401" class="mb-5">
+  <div class="mb-5">
     <RouterLink :to="{ name: 'companies.create' }">Dodaj</RouterLink>
   </div>
   <table v-if="collection.length" class="w-full text-left">
