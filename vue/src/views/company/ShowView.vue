@@ -9,6 +9,7 @@ const route = useRoute();
 const store = useStore();
 
 const { err, data } = await store.getOne("companies", route.params.id);
+console.log(data);
 </script>
 
 <template>
@@ -25,8 +26,64 @@ const { err, data } = await store.getOne("companies", route.params.id);
         <TableData>{{ data.name }}</TableData>
       </tr>
       <tr>
+        <TableData>Gałąź</TableData>
+        <TableData>{{ data.industry_id }}</TableData>
+      </tr>
+      <tr>
+        <TableData>Kategoria</TableData>
+        <TableData>{{ data.category_id }}</TableData>
+      </tr>
+      <tr>
+        <TableData>NIP</TableData>
+        <TableData>{{ data.nip }}</TableData>
+      </tr>
+      <tr>
+        <TableData>Regon</TableData>
+        <TableData>{{ data.regon }}</TableData>
+      </tr>
+      <tr>
+        <TableData>Województwo</TableData>
+        <TableData>{{ data.province }}</TableData>
+      </tr>
+      <tr>
+        <TableData>Dzielnica</TableData>
+        <TableData>{{ data.district }}</TableData>
+      </tr>
+      <tr>
+        <TableData>Gmina</TableData>
+        <TableData>{{ data.community }}</TableData>
+      </tr>
+      <tr>
         <TableData>Miasto</TableData>
         <TableData>{{ data.city }}</TableData>
+      </tr>
+      <tr>
+        <TableData>Numer nieruchomości</TableData>
+        <TableData>{{ data.propertyNumber }}</TableData>
+      </tr>
+      <tr>
+        <TableData>Numer mieszkania</TableData>
+        <TableData>{{ data.apartmentNumber }}</TableData>
+      </tr>
+      <tr>
+        <TableData>Kod pocztowy</TableData>
+        <TableData>{{ data.zipCode }}</TableData>
+      </tr>
+      <tr>
+        <TableData>Street</TableData>
+        <TableData>{{ data.street }}</TableData>
+      </tr>
+      <tr>
+        <TableData>Poczta</TableData>
+        <TableData>{{ data.postCity }}</TableData>
+      </tr>
+      <tr>
+        <TableData>Telefon</TableData>
+        <TableData>{{ data.phoneNumber }}</TableData>
+      </tr>
+      <tr>
+        <TableData>Email</TableData>
+        <TableData>{{ data.email }}</TableData>
       </tr>
     </tbody>
   </table>

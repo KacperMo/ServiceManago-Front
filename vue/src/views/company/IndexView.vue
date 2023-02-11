@@ -9,6 +9,10 @@ import TableData from "@/components/TableData.vue";
 const store = useStore();
 
 const { err, collection } = await store.all("companies");
+
+const shortString = (myString) => {
+  return myString.substring(0, 4);
+};
 </script>
 
 <template>
@@ -43,7 +47,7 @@ const { err, collection } = await store.all("companies");
           <RouterLink
             :to="{ name: 'companies.show', params: { id: item.id } }"
             :title="item.id"
-            >{{ item.id.substring(0, 4) }}</RouterLink
+            >{{ shortString(item.id) }}</RouterLink
           >
         </TableData>
         <TableData>
@@ -69,7 +73,7 @@ const { err, collection } = await store.all("companies");
             >{{ item.category?.name }}</RouterLink
           >
         </TableData>
-        <TableData>{{ item.nip }} {{ item.regon }}</TableData>
+        <TableData :title="item.regon">{{ item.nip }}</TableData>
       </tr>
     </tbody>
   </table>
