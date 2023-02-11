@@ -28,8 +28,18 @@ const { err, collection } = await store.all("categories");
     </thead>
     <tbody>
       <tr v-for="item in collection" :key="item.id">
-        <TableData>{{ item.id }}</TableData>
-        <TableData>{{ item.name }}</TableData>
+        <TableData>
+          <RouterLink
+            :to="{ name: 'categories.show', params: { id: item.id } }"
+            >{{ item.id }}</RouterLink
+          >
+        </TableData>
+        <TableData>
+          <RouterLink
+            :to="{ name: 'categories.show', params: { id: item.id } }"
+            >{{ item.name }}</RouterLink
+          >
+        </TableData>
       </tr>
     </tbody>
   </table>
