@@ -9,42 +9,45 @@ import TableData from "@/components/TableData.vue";
 const store = useStore();
 
 const { err, collection } = await store.all("companies");
+// console.log(err);
 </script>
 
 <template>
   <HeaderTwo>Firmy</HeaderTwo>
-  <AppAlert v-if="err" type="danger">{{ err.message }}</AppAlert>
-  <div class="mb-5">
-    <RouterLink :to="{ name: 'companies.create' }">Dodaj</RouterLink>
+  <AppAlert v-if="err" type="danger">{{ err }}</AppAlert>
+  <div v-else class="mb-5">
+    <RouterLink :to="{ name: 'companies.create' }" class="btn"
+      >Dodaj</RouterLink
+    >
   </div>
   <table v-if="collection.length" class="w-full text-left">
     <thead>
       <TableHeaderRow>
         <TableHeader>#</TableHeader>
+        <TableHeader>Nazwa</TableHeader>
         <TableHeader>Gałąź</TableHeader>
         <TableHeader>Kategoria</TableHeader>
-        <TableHeader>Nazwa</TableHeader>
-        <TableHeader>Miasto</TableHeader>
-        <TableHeader>Numer telefonu</TableHeader>
-        <!-- <TableHeader>Utworzono</TableHeader>
-        <TableHeader>Zaktualizowano</TableHeader> -->
+        <!-- <TableHeader>Miasto</TableHeader>
+        <TableHeader>Numer telefonu</TableHeader> -->
+        <TableHeader>NIP/Regon</TableHeader>
       </TableHeaderRow>
     </thead>
     <tbody>
       <tr v-for="company in collection" :key="company.id">
-        <TableData>{{ company.id }}</TableData>
-        <TableData>{{ company.industry?.name }}</TableData>
-        <TableData>{{ company.category?.name }}</TableData>
+        <TableData :title="company.id">{{
+          company.id.substring(0, 4)
+        }}</TableData>
         <TableData>
           <RouterLink
             :to="{ name: 'companies.show', params: { id: company.id } }"
             >{{ company.name }}</RouterLink
           >
         </TableData>
-        <TableData>{{ company.city }}</TableData>
-        <TableData>{{ company.phone_number }}</TableData>
-        <!-- <TableData>{{ company.created_at }}</TableData>
-        <TableData>{{ company.updated_at }}</TableData> -->
+        <TableData>{{ company.industry?.name }}</TableData>
+        <TableData>{{ company.category?.name }}</TableData>
+        <!-- <TableData>{{ company.city }}</TableData>
+        <TableData>{{ company.phone_number }}</TableData> -->
+        <TableData>{{ company.nip }} {{ company.regon }}</TableData>
       </tr>
     </tbody>
   </table>
