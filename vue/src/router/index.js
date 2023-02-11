@@ -66,6 +66,12 @@ const router = createRouter({
       meta: { auth: true },
     },
     {
+      path: "/kategorie",
+      name: "categories.index",
+      component: () => import("../views/category/IndexView.vue"),
+      meta: { auth: true },
+    },
+    {
       path: "/login",
       name: "login",
       component: () => import("../views/auth/LoginView.vue"),

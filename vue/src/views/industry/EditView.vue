@@ -38,11 +38,18 @@ const onSubmit = async () => {
 };
 
 const destroy = async (id) => {
-  const { err, data } = await store.destroy("industries", id);
-  error.value = err;
-  if (data?.status == 204) {
-    router.push({ name: "industries.index" });
+  if (confirm("Potwierdź")) {
+    const { err, data } = await store.destroy("industries", id);
+    error.value = err;
+    if (data?.status == 204) {
+      router.push({ name: "industries.index" });
+    }
   }
+  // const { err, data } = await store.destroy("industries", id);
+  // error.value = err;
+  // if (data?.status == 204) {
+  //   router.push({ name: "industries.index" });
+  // }
 };
 </script>
 
