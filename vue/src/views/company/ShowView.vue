@@ -27,11 +27,25 @@ console.log(data);
       </tr>
       <tr>
         <TableData>Gałąź</TableData>
-        <TableData>{{ data.industry_id }}</TableData>
+        <TableData>
+          <RouterLink
+            v-if="data.industry"
+            :to="{ name: 'industries.show', params: { id: data.industry.id } }"
+          >
+            {{ data.industry.name }}
+          </RouterLink>
+        </TableData>
       </tr>
       <tr>
         <TableData>Kategoria</TableData>
-        <TableData>{{ data.category_id }}</TableData>
+        <TableData>
+          <RouterLink
+            v-if="data.category"
+            :to="{ name: 'categories.show', params: { id: data.category.id } }"
+          >
+            {{ data.category.name }}
+          </RouterLink>
+        </TableData>
       </tr>
       <tr>
         <TableData>NIP</TableData>
@@ -83,7 +97,9 @@ console.log(data);
       </tr>
       <tr>
         <TableData>Email</TableData>
-        <TableData>{{ data.email }}</TableData>
+        <TableData>
+          <a :href="`mailto:${data.email}`">{{ data.email }}</a>
+        </TableData>
       </tr>
     </tbody>
   </table>
