@@ -22,12 +22,14 @@ const { err, collection } = await store.all("categories");
   <table v-if="collection.length" class="w-full text-left">
     <thead>
       <TableHeaderRow>
-        <TableHeader>#</TableHeader>
+        <TableHeader>LP</TableHeader>
+        <TableHeader>ID</TableHeader>
         <TableHeader>Nazwa</TableHeader>
       </TableHeaderRow>
     </thead>
     <tbody>
-      <tr v-for="item in collection" :key="item.id">
+      <tr v-for="(item, index) in collection" :key="item.id">
+        <TableData>{{ index + 1 }}</TableData>
         <TableData>
           <RouterLink
             :to="{ name: 'categories.show', params: { id: item.id } }"

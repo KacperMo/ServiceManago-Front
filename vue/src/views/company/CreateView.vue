@@ -6,7 +6,7 @@ import AppAlert from "@/components/AppAlert.vue";
 import HeaderTwo from "@/components/HeaderTwo.vue";
 import InputGroup from "@/components/InputGroup.vue";
 import InputField from "@/components/InputField.vue";
-import InputLabel from "../../components/InputLabel.vue";
+import InputLabel from "@/components/InputLabel.vue";
 import InputSelect from "@/components/InputSelect.vue";
 import InputButton from "@/components/InputButton.vue";
 import ValidationError from "@/components/ValidationError.vue";
