@@ -25,21 +25,38 @@ const { err, collection } = await store.all("categories");
         <TableHeader>LP</TableHeader>
         <TableHeader>ID</TableHeader>
         <TableHeader>Nazwa</TableHeader>
+        <TableHeader>Industry</TableHeader>
       </TableHeaderRow>
     </thead>
     <tbody>
       <tr v-for="(item, index) in collection" :key="item.id">
-        <TableData>{{ index + 1 }}</TableData>
         <TableData>
           <RouterLink
             :to="{ name: 'categories.show', params: { id: item.id } }"
+            title="Pokaż"
+            >{{ index + 1 }}</RouterLink
+          >
+        </TableData>
+        <TableData>
+          <RouterLink
+            :to="{ name: 'categories.show', params: { id: item.id } }"
+            title="Pokaż"
             >{{ item.id }}</RouterLink
           >
         </TableData>
         <TableData>
           <RouterLink
             :to="{ name: 'categories.show', params: { id: item.id } }"
+            title="Pokaż"
             >{{ item.name }}</RouterLink
+          >
+        </TableData>
+        <TableData>
+          <RouterLink
+            v-if="item.industry"
+            :to="{ name: 'industries.show', params: { id: item.industry.id } }"
+            title="Przejdź"
+            >{{ item.industry.name }}</RouterLink
           >
         </TableData>
       </tr>

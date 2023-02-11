@@ -22,21 +22,31 @@ const { err, collection } = await store.all("industries");
   <table v-if="collection.length" class="w-full text-left">
     <thead>
       <TableHeaderRow>
-        <TableHeader>#</TableHeader>
+        <TableHeader>LP</TableHeader>
+        <TableHeader>ID</TableHeader>
         <TableHeader>Nazwa</TableHeader>
       </TableHeaderRow>
     </thead>
     <tbody>
-      <tr v-for="item in collection" :key="item.id">
+      <tr v-for="(item, index) in collection" :key="item.id">
         <TableData>
           <RouterLink
             :to="{ name: 'industries.show', params: { id: item.id } }"
+            title="Pokaż"
+            >{{ index + 1 }}</RouterLink
+          >
+        </TableData>
+        <TableData>
+          <RouterLink
+            :to="{ name: 'industries.show', params: { id: item.id } }"
+            title="Pokaż"
             >{{ item.id }}</RouterLink
           >
         </TableData>
         <TableData>
           <RouterLink
             :to="{ name: 'industries.show', params: { id: item.id } }"
+            title="Pokaż"
             >{{ item.name }}</RouterLink
           >
         </TableData>

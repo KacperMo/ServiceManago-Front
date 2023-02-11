@@ -17,7 +17,7 @@ const { err, data } = await store.getOne("categories", route.params.id);
   <table v-if="data" class="w-full text-left">
     <tbody>
       <tr>
-        <TableData>#</TableData>
+        <TableData>ID</TableData>
         <TableData>{{ data.id }}</TableData>
       </tr>
       <tr>

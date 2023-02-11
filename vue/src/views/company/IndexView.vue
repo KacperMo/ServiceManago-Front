@@ -22,31 +22,54 @@ const { err, collection } = await store.all("companies");
   <table v-if="collection.length" class="w-full text-left">
     <thead>
       <TableHeaderRow>
-        <TableHeader>#</TableHeader>
+        <TableHeader>LP</TableHeader>
+        <TableHeader>ID</TableHeader>
         <TableHeader>Nazwa</TableHeader>
         <TableHeader>Gałąź</TableHeader>
         <TableHeader>Kategoria</TableHeader>
-        <!-- <TableHeader>Miasto</TableHeader>
-        <TableHeader>Numer telefonu</TableHeader> -->
         <TableHeader>NIP/Regon</TableHeader>
       </TableHeaderRow>
     </thead>
     <tbody>
-      <tr v-for="company in collection" :key="company.id">
-        <TableData :title="company.id">{{
-          company.id.substring(0, 4)
-        }}</TableData>
+      <tr v-for="(item, index) in collection" :key="item.id">
         <TableData>
           <RouterLink
-            :to="{ name: 'companies.show', params: { id: company.id } }"
-            >{{ company.name }}</RouterLink
+            :to="{ name: 'companies.show', params: { id: item.id } }"
+            title="Pokaż"
+            >{{ index + 1 }}</RouterLink
           >
         </TableData>
-        <TableData>{{ company.industry?.name }}</TableData>
-        <TableData>{{ company.category?.name }}</TableData>
-        <!-- <TableData>{{ company.city }}</TableData>
-        <TableData>{{ company.phone_number }}</TableData> -->
-        <TableData>{{ company.nip }} {{ company.regon }}</TableData>
+        <TableData>
+          <RouterLink
+            :to="{ name: 'companies.show', params: { id: item.id } }"
+            :title="item.id"
+            >{{ item.id.substring(0, 4) }}</RouterLink
+          >
+        </TableData>
+        <TableData>
+          <RouterLink
+            :to="{ name: 'companies.show', params: { id: item.id } }"
+            title="Pokaż"
+            >{{ item.name }}</RouterLink
+          >
+        </TableData>
+        <TableData>
+          <RouterLink
+            v-if="item.industry"
+            :to="{ name: 'industries.show', params: { id: item.industry.id } }"
+            title="Przejdź"
+            >{{ item.industry?.name }}</RouterLink
+          >
+        </TableData>
+        <TableData>
+          <RouterLink
+            v-if="item.category"
+            :to="{ name: 'categories.show', params: { id: item.category.id } }"
+            title="Przejdź"
+            >{{ item.category?.name }}</RouterLink
+          >
+        </TableData>
+        <TableData>{{ item.nip }} {{ item.regon }}</TableData>
       </tr>
     </tbody>
   </table>
