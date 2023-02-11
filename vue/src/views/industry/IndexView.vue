@@ -15,7 +15,9 @@ const { err, collection } = await store.all("industries");
   <HeaderTwo>Gałęzie</HeaderTwo>
   <AppAlert v-if="err" type="danger">{{ err }}</AppAlert>
   <div v-else class="mb-5">
-    <a href="#" class="btn">Dodaj</a>
+    <RouterLink :to="{ name: 'industries.create' }" class="btn"
+      >Dodaj</RouterLink
+    >
   </div>
   <table v-if="collection.length" class="w-full text-left">
     <thead>
