@@ -13,6 +13,9 @@ const store = useAuthStore();
       <RouterLink :to="{ name: 'about' }">O nas</RouterLink>
     </div>
     <div>
+      <RouterLink :to="{ name: 'industries.index' }">Gałęzie</RouterLink>
+    </div>
+    <div>
       <RouterLink :to="{ name: 'companies.index' }">Firmy</RouterLink>
     </div>
     <div v-if="!store.isLoggedIn">

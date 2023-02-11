@@ -42,6 +42,18 @@ const router = createRouter({
       meta: { auth: true },
     },
     {
+      path: "/galezie",
+      name: "industries.index",
+      component: () => import("../views/industry/IndexView.vue"),
+      meta: { auth: true },
+    },
+    {
+      path: "/galezie/:id",
+      name: "industries.show",
+      component: () => import("../views/industry/ShowView.vue"),
+      meta: { auth: true },
+    },
+    {
       path: "/login",
       name: "login",
       component: () => import("../views/auth/LoginView.vue"),

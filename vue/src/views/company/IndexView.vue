@@ -9,7 +9,6 @@ import TableData from "@/components/TableData.vue";
 const store = useStore();
 
 const { err, collection } = await store.all("companies");
-// console.log(err);
 </script>
 
 <template>
