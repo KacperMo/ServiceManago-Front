@@ -14,11 +14,11 @@ const { err, collection } = await store.all("categories");
 <template>
   <HeaderTwo>Kategorie</HeaderTwo>
   <AppAlert v-if="err" type="danger">{{ err }}</AppAlert>
-  <!-- <div v-else class="mb-5">
-    <RouterLink :to="{ name: 'industries.create' }" class="btn"
+  <div v-else class="mb-5">
+    <RouterLink :to="{ name: 'categories.create' }" class="btn"
       >Dodaj</RouterLink
     >
-  </div> -->
+  </div>
   <table v-if="collection.length" class="w-full text-left">
     <thead>
       <TableHeaderRow>
