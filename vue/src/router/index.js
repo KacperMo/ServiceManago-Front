@@ -60,6 +60,12 @@ const router = createRouter({
       meta: { auth: true },
     },
     {
+      path: "/galezie/:id/edit",
+      name: "industries.edit",
+      component: () => import("../views/industry/EditView.vue"),
+      meta: { auth: true },
+    },
+    {
       path: "/login",
       name: "login",
       component: () => import("../views/auth/LoginView.vue"),

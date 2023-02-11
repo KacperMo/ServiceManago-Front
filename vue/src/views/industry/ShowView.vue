@@ -31,10 +31,10 @@ const { err, data } = await store.getOne("industries", route.params.id);
     <RouterLink :to="{ name: 'industries.index' }" class="btn mr-2"
       >Powrót</RouterLink
     >
-    <!-- <RouterLink
-      :to="{ name: 'companies.edit', params: { id: route.params.id } }"
+    <RouterLink
+      :to="{ name: 'industries.edit', params: { id: route.params.id } }"
       class="btn"
       >Edytuj</RouterLink
-    > -->
+    >
   </p>
 </template>
