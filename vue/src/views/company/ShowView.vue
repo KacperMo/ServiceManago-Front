@@ -9,7 +9,6 @@ const route = useRoute();
 const store = useStore();
 
 const { err, data } = await store.getOne("companies", route.params.id);
-console.log(data);
 </script>
 
 <template>
@@ -73,15 +72,15 @@ console.log(data);
       </tr>
       <tr>
         <TableData>Numer nieruchomości</TableData>
-        <TableData>{{ data.propertyNumber }}</TableData>
+        <TableData>{{ data.property_number }}</TableData>
       </tr>
       <tr>
         <TableData>Numer mieszkania</TableData>
-        <TableData>{{ data.apartmentNumber }}</TableData>
+        <TableData>{{ data.apartment_number }}</TableData>
       </tr>
       <tr>
         <TableData>Kod pocztowy</TableData>
-        <TableData>{{ data.zipCode }}</TableData>
+        <TableData>{{ data.zip_code }}</TableData>
       </tr>
       <tr>
         <TableData>Street</TableData>
@@ -89,11 +88,11 @@ console.log(data);
       </tr>
       <tr>
         <TableData>Poczta</TableData>
-        <TableData>{{ data.postCity }}</TableData>
+        <TableData>{{ data.post_city }}</TableData>
       </tr>
       <tr>
         <TableData>Telefon</TableData>
-        <TableData>{{ data.phoneNumber }}</TableData>
+        <TableData>{{ data.phone_number }}</TableData>
       </tr>
       <tr>
         <TableData>Email</TableData>
