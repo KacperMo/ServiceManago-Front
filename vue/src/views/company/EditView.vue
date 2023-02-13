@@ -87,10 +87,12 @@ const onSubmit = async () => {
 };
 
 const destroy = async (id) => {
-  const { err: error1, data } = await store.destroy("companies", id);
-  error.value = error1;
-  if (data?.status == 204) {
-    router.push({ name: "companies.index" });
+  if (confirm("Potwierdź")) {
+    const { err, data } = await store.destroy("companies", id);
+    error.value = err;
+    if (data?.status == 204) {
+      router.push({ name: "companies.index" });
+    }
   }
 };
 </script>
@@ -304,7 +306,10 @@ const destroy = async (id) => {
       </template>
     </InputGroup>
     <InputButton />
-    <a @click="destroy(company.id)" href="#delete" class="btn btn-danger ml-3"
+    <a
+      @click="destroy(route.params.id)"
+      href="#delete"
+      class="btn btn-danger ml-3"
       >Usuń</a
     >
   </form>
