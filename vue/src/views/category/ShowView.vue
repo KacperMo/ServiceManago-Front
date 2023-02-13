@@ -21,6 +21,10 @@ const { err, data } = await store.getOne("categories", route.params.id);
         <TableData>{{ data.id }}</TableData>
       </tr>
       <tr>
+        <TableData>Gałąź</TableData>
+        <TableData>{{ data.industry.name }}</TableData>
+      </tr>
+      <tr>
         <TableData>Nazwa</TableData>
         <TableData>{{ data.name }}</TableData>
       </tr>

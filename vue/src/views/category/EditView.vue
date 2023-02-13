@@ -75,6 +75,7 @@ const destroy = async (id) => {
       </template>
     </InputGroup>
     <InputGroup>
+      <InputLabel for="name">Kategoria</InputLabel>
       <InputField v-model="name" name="name" id="name" placeholder="Nazwa" />
       <template v-for="e in validationErrors" :key="e.field">
         <template v-if="e.field == 'name'">
