@@ -2,38 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: "Inconsolata", monospace;
-  color: #1f2937;
+@layer base {
+  nav a {
+    @apply flex;
+  }
+  a:hover {
+    @apply text-blue-800;
+  }
 }
-
-a:hover {
-  color: #1e40af;
-}
-
-a.logo {
-  color: black;
-}
-a.logo:hover {
-  color: #1e40af;
-}
-
 .router-link-active {
-  color: #1e40af;
-  /* background-color: black; */
-  /* font-weight: bold; */
+  @apply text-blue-800;
 }
 
-.btn {
-  color: #1e40af;
-  border-bottom: 1px solid #1e40af;
-  padding-bottom: 0.1rem;
+.logo {
+  @apply text-gray-700;
 }
-.btn:hover {
-  border-bottom: 0;
-  color: black;
-}
-.btn-danger {
-  color: #ef4444;
-  border-bottom: 1px solid #ef4444;
+
+@layer components {
+  .btn {
+    @apply text-blue-800 border-b-[1px] border-blue-800 pb-0.5 hover:border-0 hover:text-black;
+  }
+  .btn-danger {
+    @apply text-red-500 border-b-[1px] border-red-500;
+  }
 }

@@ -8,15 +8,21 @@ import AppFooter from "@/components/AppFooter.vue";
 <template>
   <div class="flex">
     <div
-      class="w-1/5 mr-1 mt-1 p-2 border-t-[1px] border-gray-500 font-bold text-sm sm:text-sm md:text-sm lg:text-base xl:text-base 2xl:text-base"
+      class="w-2/12 mr-1 mt-1 p-2 border-t-[2px] border-gray-500 font-bold 2xl:font-extrabold text-xs sm:text-sm md:text-sm lg:text-base xl:text-lg 2xl:text-xl"
     >
-      <RouterLink :to="{ name: 'home' }" class="logo">ServiceManago</RouterLink>
+      <RouterLink :to="{ name: 'home' }" class="hover:text-brand logo"
+        >ServiceManago</RouterLink
+      >
     </div>
-    <div class="w-4/5 mt-1 py-2 border-t-[1px] border-gray-500">&mdash;</div>
+    <div class="w-10/12 mt-1 py-2 border-t-[2px] border-gray-500">&mdash;</div>
   </div>
   <div class="flex">
-    <AppNav />
-    <div class="w-4/5 py-2 border-t-[1px] border-gray-500">
+    <nav
+      class="w-2/12 mr-1 p-2 border-t-[1px] border-gray-500 text-sm sm:text-sm md:text-base lg:text-lg xl:text-xl"
+    >
+      <AppNav />
+    </nav>
+    <div class="w-10/12 py-2 border-t-[1px] border-gray-500">
       <RouterView v-slot="{ Component }">
         <template v-if="Component">
           <KeepAlive>
@@ -33,5 +39,12 @@ import AppFooter from "@/components/AppFooter.vue";
       </RouterView>
     </div>
   </div>
-  <AppFooter />
+  <div class="flex">
+    <div class="w-2/12 mr-1 p-2 border-t-[1px] border-gray-500">&mdash;</div>
+    <div class="w-10/12 py-2 border-t-[1px] border-gray-500 text-gray-700">
+      <footer class="flex text-xs sm:text-xs md:text-sm lg:text-base">
+        <AppFooter />
+      </footer>
+    </div>
+  </div>
 </template>

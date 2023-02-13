@@ -5,27 +5,15 @@ const store = useAuthStore();
 </script>
 
 <template>
-  <div class="w-1/5 mr-1 p-2 border-t-[1px] border-gray-500">
-    <div>
-      <RouterLink :to="{ name: 'home' }">Strona główna</RouterLink>
-    </div>
-    <div>
-      <RouterLink :to="{ name: 'about' }">O nas</RouterLink>
-    </div>
-    <div>
-      <RouterLink :to="{ name: 'industries.index' }">Gałęzie</RouterLink>
-    </div>
-    <div>
-      <RouterLink :to="{ name: 'categories.index' }">Kategorie</RouterLink>
-    </div>
-    <div>
-      <RouterLink :to="{ name: 'companies.index' }">Firmy</RouterLink>
-    </div>
-    <div v-if="!store.isLoggedIn">
-      <RouterLink :to="{ name: 'login' }">Zaloguj</RouterLink>
-    </div>
-    <div v-if="store.isLoggedIn">
-      <RouterLink :to="{ name: 'logout' }">Wyloguj</RouterLink>
-    </div>
-  </div>
+  <RouterLink :to="{ name: 'home' }">Start</RouterLink>
+  <RouterLink :to="{ name: 'about' }">O nas</RouterLink>
+  <RouterLink :to="{ name: 'industries.index' }">Gałęzie</RouterLink>
+  <RouterLink :to="{ name: 'categories.index' }">Kategorie</RouterLink>
+  <RouterLink :to="{ name: 'companies.index' }">Firmy</RouterLink>
+  <template v-if="!store.isLoggedIn">
+    <RouterLink :to="{ name: 'login' }">Zaloguj</RouterLink>
+  </template>
+  <template v-if="store.isLoggedIn">
+    <RouterLink :to="{ name: 'logout' }">Wyloguj</RouterLink>
+  </template>
 </template>

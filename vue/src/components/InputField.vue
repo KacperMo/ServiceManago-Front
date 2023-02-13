@@ -15,7 +15,7 @@ defineEmits(["update:modelValue"]);
     @input="$emit('update:modelValue', $event.target.value)"
     :type="type"
     :id="id"
-    class="border border-gray-900 hover:border-black focus:outline-none focus:border-black p-1 w-full"
+    class="border border-gray-500 bg-gray-50 hover:border-black hover:bg-white focus:outline-none focus:border-black focus:bg-white p-1 w-full text-base sm:text-base md:text-base lg:text-lg xl:text-xl 2xl:text-2xl"
     :placeholder="placeholder"
   />
 </template>
