@@ -7,22 +7,22 @@
     @apply flex;
   }
   a:hover {
-    @apply text-blue-800;
+    @apply text-blue-800 dark:text-blue-100;
   }
 }
 .router-link-active {
-  @apply text-blue-800;
+  @apply text-blue-800 dark:text-blue-300;
 }
 
 .logo {
-  @apply text-gray-700;
+  @apply text-gray-700 dark:text-gray-300;
 }
 
 @layer components {
   .btn {
-    @apply text-blue-800 border-b-[1px] border-blue-800 pb-0.5 hover:border-0 hover:text-black;
+    @apply text-blue-800 dark:text-blue-500 border-b-[1px] border-blue-800 dark:border-blue-500 pb-0.5 hover:border-0 hover:text-black dark:hover:text-blue-100 text-sm sm:text-sm md:text-base lg:text-lg;
   }
   .btn-danger {
-    @apply text-red-500 border-b-[1px] border-red-500;
+    @apply text-red-500 dark:text-red-600 border-b-[1px] border-red-500 dark:border-red-600;
   }
 }

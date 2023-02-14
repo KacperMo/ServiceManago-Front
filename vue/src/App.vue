@@ -8,21 +8,29 @@ import AppFooter from "@/components/AppFooter.vue";
 <template>
   <div class="flex">
     <div
-      class="w-2/12 mr-1 mt-1 p-2 border-t-[2px] border-gray-500 font-bold 2xl:font-extrabold text-xs sm:text-sm md:text-sm lg:text-base xl:text-lg 2xl:text-xl"
+      class="w-2/12 mr-1 mt-1 p-2 border-t-[2px] border-gray-500 dark:border-gray-600 font-bold 2xl:font-extrabold text-xs sm:text-sm md:text-sm lg:text-base xl:text-lg 2xl:text-xl"
     >
-      <RouterLink :to="{ name: 'home' }" class="hover:text-brand logo"
+      <RouterLink
+        :to="{ name: 'home' }"
+        class="hover:text-brand dark:hover:text-brand logo"
         >ServiceManago</RouterLink
       >
     </div>
-    <div class="w-10/12 mt-1 py-2 border-t-[2px] border-gray-500">&mdash;</div>
+    <div
+      class="w-10/12 mt-1 py-2 border-t-[2px] border-gray-500 dark:border-gray-600"
+    >
+      &mdash;
+    </div>
   </div>
   <div class="flex">
     <nav
-      class="w-2/12 mr-1 p-2 border-t-[1px] border-gray-500 text-sm sm:text-sm md:text-base lg:text-lg xl:text-xl"
+      class="w-2/12 mr-1 p-2 border-t-[1px] border-gray-500 dark:border-gray-600 text-sm sm:text-sm md:text-base lg:text-lg xl:text-xl"
     >
       <AppNav />
     </nav>
-    <div class="w-10/12 py-2 border-t-[1px] border-gray-500">
+    <div
+      class="w-10/12 py-2 border-t-[1px] border-gray-500 dark:border-gray-600"
+    >
       <RouterView v-slot="{ Component }">
         <template v-if="Component">
           <KeepAlive>
@@ -40,8 +48,14 @@ import AppFooter from "@/components/AppFooter.vue";
     </div>
   </div>
   <div class="flex">
-    <div class="w-2/12 mr-1 p-2 border-t-[1px] border-gray-500">&mdash;</div>
-    <div class="w-10/12 py-2 border-t-[1px] border-gray-500 text-gray-700">
+    <div
+      class="w-2/12 mr-1 p-2 border-t-[1px] border-gray-500 dark:border-gray-600"
+    >
+      &mdash;
+    </div>
+    <div
+      class="w-10/12 py-2 border-t-[1px] border-gray-500 dark:border-gray-600 text-gray-700 dark:text-gray-500"
+    >
       <footer class="flex text-xs sm:text-xs md:text-sm lg:text-base">
         <AppFooter />
       </footer>
