@@ -3,7 +3,7 @@ defineProps({
   items: { type: Array, required: true },
   id: { type: String },
   placeholder: { type: String, default: "Wybierz" },
-  modelValue: { type: String },
+  modelValue: { type: [String, Number] },
 });
 
 defineEmits(["update:modelValue"]);

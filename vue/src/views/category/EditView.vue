@@ -25,7 +25,7 @@ const { err, data } = await store.getOne("categories", route.params.id);
 error.value = err;
 const validationErrors = ref([]);
 
-const industryId = ref(data.industry_id?.toString());
+const industryId = ref(data.industry_id);
 const name = ref(data.name);
 
 const onSubmit = async () => {
