@@ -35,7 +35,7 @@ const { err, data } = await store.getOne("companies", route.params.id);
           </RouterLink>
         </TableData>
       </tr>
-      <tr>
+      <!-- <tr>
         <TableData>Kategoria</TableData>
         <TableData>
           <RouterLink
@@ -45,7 +45,7 @@ const { err, data } = await store.getOne("companies", route.params.id);
             {{ data.category.name }}
           </RouterLink>
         </TableData>
-      </tr>
+      </tr> -->
       <tr>
         <TableData>NIP</TableData>
         <TableData>{{ data.nip }}</TableData>

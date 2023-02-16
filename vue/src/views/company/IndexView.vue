@@ -30,7 +30,6 @@ const shortString = (myString) => {
         <TableHeader>ID</TableHeader>
         <TableHeader>Nazwa</TableHeader>
         <TableHeader>Gałąź</TableHeader>
-        <TableHeader>Kategoria</TableHeader>
         <TableHeader>NIP/Regon</TableHeader>
       </TableHeaderRow>
     </thead>
@@ -63,14 +62,6 @@ const shortString = (myString) => {
             :to="{ name: 'industries.show', params: { id: item.industry.id } }"
             title="Przejdź"
             >{{ item.industry?.name }}</RouterLink
-          >
-        </TableData>
-        <TableData>
-          <RouterLink
-            v-if="item.category"
-            :to="{ name: 'categories.show', params: { id: item.category.id } }"
-            title="Przejdź"
-            >{{ item.category?.name }}</RouterLink
           >
         </TableData>
         <TableData :title="item.regon">{{ item.nip }}</TableData>

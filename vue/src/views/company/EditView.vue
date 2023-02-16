@@ -21,10 +21,10 @@ const { err: industryError, collection: industries } = await store.all(
 );
 error.value = industryError;
 
-const { err: categoryError, collection: categories } = await store.all(
-  "categories"
-);
-error.value = categoryError;
+// const { err: categoryError, collection: categories } = await store.all(
+//   "categories"
+// );
+// error.value = categoryError;
 
 const { err: companyError, data } = await store.getOne(
   "companies",
@@ -35,7 +35,7 @@ error.value = companyError;
 const validationErrors = ref([]);
 const company = reactive({
   industryId: data?.industry_id.toString(),
-  categoryId: data?.category_id.toString(),
+  // categoryId: data?.category_id.toString(),
   name: data?.name,
   nip: data?.nip,
   regon: data?.regon,
@@ -55,7 +55,7 @@ const company = reactive({
 const onSubmit = async () => {
   const editingCompany = {
     industryId: company.industryId,
-    categoryId: company.categoryId,
+    // categoryId: company.categoryId,
     name: company.name,
     nip: company.nip,
     regon: company.regon,
@@ -115,7 +115,7 @@ const destroy = async (id) => {
         </template>
       </template>
     </InputGroup>
-    <InputGroup>
+    <!-- <InputGroup>
       <InputLabel for="categoryId">Kategoria</InputLabel>
       <InputSelect
         v-model="company.categoryId"
@@ -128,7 +128,7 @@ const destroy = async (id) => {
           <ValidationError>{{ e.message }}</ValidationError>
         </template>
       </template>
-    </InputGroup>
+    </InputGroup> -->
     <InputGroup>
       <InputLabel for="name">Nazwa</InputLabel>
       <InputField
